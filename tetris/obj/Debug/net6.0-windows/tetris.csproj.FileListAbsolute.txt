@@ -1,0 +1,17 @@
+C:\Users\Jaebin\Desktop\Jaebin\Programing\c#\tetris\tetris\bin\Debug\net6.0-windows\tetris.exe
+C:\Users\Jaebin\Desktop\Jaebin\Programing\c#\tetris\tetris\bin\Debug\net6.0-windows\tetris.deps.json
+C:\Users\Jaebin\Desktop\Jaebin\Programing\c#\tetris\tetris\bin\Debug\net6.0-windows\tetris.runtimeconfig.json
+C:\Users\Jaebin\Desktop\Jaebin\Programing\c#\tetris\tetris\bin\Debug\net6.0-windows\tetris.dll
+C:\Users\Jaebin\Desktop\Jaebin\Programing\c#\tetris\tetris\bin\Debug\net6.0-windows\tetris.pdb
+C:\Users\Jaebin\Desktop\Jaebin\Programing\c#\tetris\tetris\obj\Debug\net6.0-windows\tetris.csproj.AssemblyReference.cache
+C:\Users\Jaebin\Desktop\Jaebin\Programing\c#\tetris\tetris\obj\Debug\net6.0-windows\tetris.Form1.resources
+C:\Users\Jaebin\Desktop\Jaebin\Programing\c#\tetris\tetris\obj\Debug\net6.0-windows\tetris.csproj.GenerateResource.cache
+C:\Users\Jaebin\Desktop\Jaebin\Programing\c#\tetris\tetris\obj\Debug\net6.0-windows\tetris.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Jaebin\Desktop\Jaebin\Programing\c#\tetris\tetris\obj\Debug\net6.0-windows\tetris.AssemblyInfoInputs.cache
+C:\Users\Jaebin\Desktop\Jaebin\Programing\c#\tetris\tetris\obj\Debug\net6.0-windows\tetris.AssemblyInfo.cs
+C:\Users\Jaebin\Desktop\Jaebin\Programing\c#\tetris\tetris\obj\Debug\net6.0-windows\tetris.csproj.CoreCompileInputs.cache
+C:\Users\Jaebin\Desktop\Jaebin\Programing\c#\tetris\tetris\obj\Debug\net6.0-windows\tetris.dll
+C:\Users\Jaebin\Desktop\Jaebin\Programing\c#\tetris\tetris\obj\Debug\net6.0-windows\refint\tetris.dll
+C:\Users\Jaebin\Desktop\Jaebin\Programing\c#\tetris\tetris\obj\Debug\net6.0-windows\tetris.pdb
+C:\Users\Jaebin\Desktop\Jaebin\Programing\c#\tetris\tetris\obj\Debug\net6.0-windows\tetris.genruntimeconfig.cache
+C:\Users\Jaebin\Desktop\Jaebin\Programing\c#\tetris\tetris\obj\Debug\net6.0-windows\ref\tetris.dll
