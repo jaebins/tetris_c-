@@ -6,18 +6,18 @@ namespace tetris
 {
     public partial class Form1 : Form
     {
-        Graphics gameScreen_graphic; // ºí·ÏÀ» ±×·Á³¾ È­¸é ±×·¡ÇÈ
+        Graphics gameScreen_graphic; // ë¸”ë¡ì„ ê·¸ë ¤ë‚¼ í™”ë©´ ê·¸ë˜í”½
         Thread downBlockThread;
 
         List<Point[,]> blocks = new List<Point[,]>();
-        Point[,] nowBlock; // ÇöÀç ¼³Ä¡µÇÀÖ´Â ºí·Ï
-        List<Point> nowBlocks_Loc = new List<Point>(); // ÇöÀç ¼³Ä¡µÇÀÖ´Â ºí·ÏÀÇ À§Ä¡
+        Point[,] nowBlock; // í˜„ì¬ ì„¤ì¹˜ë˜ìˆëŠ” ë¸”ë¡
+        List<Point> nowBlocks_Loc = new List<Point>(); // í˜„ì¬ ì„¤ì¹˜ë˜ìˆëŠ” ë¸”ë¡ì˜ ìœ„ì¹˜
         List<Point> nowBlocks_index = new List<Point>();
 
-        Point incBlcokLoc = new Point(0, 0); // ºí·ÏÀÌ ÀÌµ¿ÇÑ °ª
-        Point mostX = new Point(0, 0); // °¡ÀåÀÚ¸® X
-        Point mostY = new Point(0, 0); // °¡ÀåÀÚ¸® Y
-        int blockTransCount = 0; // ºí·° ¸ğ¾ç
+        Point incBlcokLoc = new Point(0, 0); // ë¸”ë¡ì´ ì´ë™í•œ ê°’
+        Point mostX = new Point(0, 0); // ê°€ì¥ìë¦¬ X
+        Point mostY = new Point(0, 0); // ê°€ì¥ìë¦¬ Y
+        int blockTransCount = 0; // ë¸”ëŸ­ ëª¨ì–‘
 
         public Form1()
         {
@@ -26,7 +26,7 @@ namespace tetris
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // ºí·Ï À§Ä¡ ÁÂÇ¥ ÀúÀå, x´Â 10±îÁö, y´Â 20±îÁö
+            // ë¸”ë¡ ìœ„ì¹˜ ì¢Œí‘œ ì €ì¥, xëŠ” 10ê¹Œì§€, yëŠ” 20ê¹Œì§€
             GameRule.game_blockLocs = new BlocksLocs[GameRule.game_Width / GameRule.game_blockX, GameRule.game_Height / GameRule.game_blockY];
             for (int i = 0; i < GameRule.game_blockLocs.GetLength(0); i++)
             {
@@ -50,9 +50,9 @@ namespace tetris
             gameScreen_graphic = CreateGraphics();
         }
 
-        private void Form1_KeyUp(object sender, KeyEventArgs e) // Å° ÀÌº¥Æ®
+        private void Form1_KeyUp(object sender, KeyEventArgs e) // í‚¤ ì´ë²¤íŠ¸
         {
-            if (e.KeyCode == Keys.Left) // ¿ŞÂÊ Å° ÀÌº¥Æ®
+            if (e.KeyCode == Keys.Left) // ì™¼ìª½ í‚¤ ì´ë²¤íŠ¸
             {
                 for(int i = 0; i < nowBlocks_Loc.Count; i++)
                 {
@@ -63,7 +63,7 @@ namespace tetris
                 }
             }
 
-            if (e.KeyCode == Keys.Right && mostX.X < 9) // ¿À¸¥ÂÊ Å° ÀÌº¥Æ®
+            if (e.KeyCode == Keys.Right && mostX.X < 9) // ì˜¤ë¥¸ìª½ í‚¤ ì´ë²¤íŠ¸
             {
                 incBlcokLoc.X += 1;
                 ResettingMino(true);
@@ -98,22 +98,21 @@ namespace tetris
             SelectMino();
         }
 
-        void SelectMino() // ºí·° »Ì±â, ÃÊ±âÈ­
+        void SelectMino() // ë¸”ëŸ­ ë½‘ê¸°, ì´ˆê¸°í™”
         {
-            //Random random = new Random();
-            //nowBlock = blocks[random.Next(0, blocks.Count)];
-            nowBlock = Blocks.Lmino_Reverse;
+            Random random = new Random();
+            nowBlock = blocks[random.Next(0, blocks.Count)];
             incBlcokLoc = new Point(0, 0);
             blockTransCount = 0;
             nowBlocks_Loc.Clear();
             nowBlocks_index.Clear();
-            DrawMino(nowBlock, false, false); // ·£´ıºí·ÏÀ¸·Î ¹Ù²Ù±â
+            DrawMino(nowBlock, false, false); // ëœë¤ë¸”ë¡ìœ¼ë¡œ ë°”ê¾¸ê¸°
         }
 
-        void ResettingMino(bool isUserMove) // ºí·° Áö¿ì°í ´Ù½Ã ±×¸®±â (ºí·° ÀÌµ¿)
+        void ResettingMino(bool isUserMove) // ë¸”ëŸ­ ì§€ìš°ê³  ë‹¤ì‹œ ê·¸ë¦¬ê¸° (ë¸”ëŸ­ ì´ë™)
         {
             if (mostY.Y >= (GameRule.game_Height / GameRule.game_blockY) - 1 ||
-                GameRule.game_blockLocs[mostY.X, mostY.Y + 1].IsFill) // ¸¸¾à ºí·°ÀÌ ¹Ù´Ú¿¡ ´ê°Å³ª ºí·°¿¡ ´ê´Â´Ù¸é
+                GameRule.game_blockLocs[mostY.X, mostY.Y + 1].IsFill) // ë§Œì•½ ë¸”ëŸ­ì´ ë°”ë‹¥ì— ë‹¿ê±°ë‚˜ ë¸”ëŸ­ì— ë‹¿ëŠ”ë‹¤ë©´
             {
                 for(int i = 0; i < 4; i++)
                 {
@@ -128,7 +127,7 @@ namespace tetris
             }
         }
 
-        void DrawMino(Point[,] tarBlocks, bool isUserMove, bool isBuild) // ºí·° ¼±ÅÃÇÏ°í ±×¸®±â
+        void DrawMino(Point[,] tarBlocks, bool isUserMove, bool isBuild) // ë¸”ëŸ­ ì„ íƒí•˜ê³  ê·¸ë¦¬ê¸°
         {
             mostX = new Point(0, 0);
             mostY = new Point(0, 0);
@@ -138,7 +137,7 @@ namespace tetris
                 int x_inArray = tarBlocks[blockTransCount, i].X + incBlcokLoc.X; 
                 int y_inArray = tarBlocks[blockTransCount, i].Y + incBlcokLoc.Y;
 
-                BlocksLocs blocksLocs = GameRule.game_blockLocs[x_inArray, y_inArray]; // ½ÇÁúÀûÀÎ ºí·°°ª
+                BlocksLocs blocksLocs = GameRule.game_blockLocs[x_inArray, y_inArray]; // ì‹¤ì§ˆì ì¸ ë¸”ëŸ­ê°’
                 Point loc = blocksLocs.Loc;
 
                 if (!isBuild)
@@ -152,7 +151,7 @@ namespace tetris
                     nowBlocks_index.Add(new Point(x_inArray, y_inArray));
                 }
 
-                // ºí·° ±×¸®±â
+                // ë¸”ëŸ­ ê·¸ë¦¬ê¸°
                 Rectangle rect = new Rectangle(loc, new Size(GameRule.game_blockX, GameRule.game_blockY));
                 Rectangle rect2 = new Rectangle(loc, new Size(GameRule.game_blockX, GameRule.game_blockY));
                 gameScreen_graphic.DrawRectangle(Pens.Black, rect);
@@ -167,7 +166,7 @@ namespace tetris
             }
         }
 
-        void ClearMino() // ºí·° Áö¿ì±â
+        void ClearMino() // ë¸”ëŸ­ ì§€ìš°ê¸°
         {
             for (int i = 0; i < 4; i++)
             {
@@ -180,10 +179,10 @@ namespace tetris
             nowBlocks_index.Clear();
         }
 
-        void DownBlocks() // ºí·° ³»·Á¿À´Â ¾²·¹µå
+        void DownBlocks() // ë¸”ëŸ­ ë‚´ë ¤ì˜¤ëŠ” ì“°ë ˆë“œ
         {
             Thread.Sleep(1000);
-            downBlockThread.Interrupt(); // ºí·°ÀÌ ³»·Á¿À¸é¼­ ¾²·¹µå°¡ °ãÄ¡Áö ¾Ê°ÔÇÏ±â À§ÇØ ¾²·¹µå ÁßÁö
+            downBlockThread.Interrupt(); // ë¸”ëŸ­ì´ ë‚´ë ¤ì˜¤ë©´ì„œ ì“°ë ˆë“œê°€ ê²¹ì¹˜ì§€ ì•Šê²Œí•˜ê¸° ìœ„í•´ ì“°ë ˆë“œ ì¤‘ì§€
 
             incBlcokLoc.Y += 1;
             ResettingMino(false);
